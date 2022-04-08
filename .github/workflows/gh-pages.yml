@@ -1,0 +1,27 @@
+name: Publish
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Logseq Publish
+        uses: pengx17/logseq-publish@0.1.5
+        with:
+          dest: output
+
+      - name: Deploy to gh-pages
+        uses: JamesIves/github-pages-deploy-action@4.1.9
+        with:
+          branch: gh-pages
+          folder: output
+          clean: true
+          clean-exclude: |
+            CNAME
