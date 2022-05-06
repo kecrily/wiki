@@ -1,4 +1,4 @@
-name: Publish
+name: Deploy
 
 on:
   push:
@@ -10,22 +10,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Logseq Publish
         uses: pengx17/logseq-publish@main
         with:
-          dest: output
           version: nightly
 
       - name: Not Jekyll
-        run: touch $GITHUB_WORKSPACE/output/.nojekyll
+        run: touch $GITHUB_WORKSPACE/www/.nojekyll
 
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: output
+          folder: www
           clean: true
           clean-exclude: |
             CNAME
