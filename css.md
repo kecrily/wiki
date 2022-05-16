@@ -1,12 +1,14 @@
+# CSS 特性
+
 仅在支持该特性的浏览器中使用
 
   ```css
-  @supports (property):{
+  @supports (property) {
     property: somthing;
   }
   ```
 
-避免因页面长度不同而导致滚动条有无，而对布局产生影响
+避免因页面长度不同而导致滚动条有无，而对布局产生影
 
   ```css
   html {
