@@ -3,9 +3,7 @@
 仅在支持该特性的浏览器中使用
 
   ```css
-  @supports (property) {
-    property: somthing;
-  }
+  @supports (property) { /* ... */ }
   ```
 
 避免因页面长度不同而导致滚动条有无，而对布局产生影
@@ -49,3 +47,17 @@
     accent-color: black;
   }
   ```
+
+根据用户是否启用精简模式来加载内容[^1]（[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-data)）
+
+  ```css
+   @media (prefers-reduced-data: no-preference | reduce) { /* ... */ }
+  ```
+
+  也可以用来控制外部资源的加载
+  
+   ```html
+  <link rel="preload" href="fonts/montserrat-regular.woff2" as="font" media="(prefers-reduced-data: no-preference)" crossorigin>
+  ```
+
+[^1]: 目前仅有 Chromium 系浏览器支持且需[手动开启](chrome://flags/#enable-experimental-web-platform-features)。
